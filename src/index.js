@@ -15,12 +15,12 @@ import ObservableExample from './components/pure/ObservableExample';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
+     <App /> 
     {/* <AppRoutingOne/> */}
     {/* <AppRoutingFinal /> */}
      {/* ejemplos de porocesos asincronos */}
      {/* <AsyncExample/> */}
-     <ObservableExample/>
+     {/* <ObservableExample/> */}
 
   </React.StrictMode>
 );

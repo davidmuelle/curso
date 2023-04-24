@@ -10,6 +10,7 @@ import LoginFormik from './components/pure/forms/loginFormik';
 import ResgisterFormik from './components/pure/forms/resgisterFormik';
 import AsyncExample from './components/pure/AsyncExample';
 import ObservableExample from './components/pure/ObservableExample';
+import FecthExample from './components/pure/fecthExample';
 //import Clock from './components/pure/clock';
 // import Greetingf from './components/pure/greetingf';
 
@@ -53,6 +54,7 @@ function App() {
 
         {/* ejemplos de porocesos asincronos */}
         {/* <AsyncExample/> */}
+        <FecthExample/>
       </header>
     </div>
   );
