@@ -11,6 +11,8 @@ import ResgisterFormik from './components/pure/forms/resgisterFormik';
 import AsyncExample from './components/pure/AsyncExample';
 import ObservableExample from './components/pure/ObservableExample';
 import FecthExample from './components/pure/fecthExample';
+import AxiosExample from './components/pure/axiosExample';
+import AxiosCRUDExample from './components/pure/axiosCRUDExample';
 //import Clock from './components/pure/clock';
 // import Greetingf from './components/pure/greetingf';
 
@@ -54,7 +56,9 @@ function App() {
 
         {/* ejemplos de porocesos asincronos */}
         {/* <AsyncExample/> */}
-        <FecthExample/>
+        {/* <FecthExample/> */}
+        {/* <AxiosExample/> */}
+        <AxiosCRUDExample/>
       </header>
     </div>
   );

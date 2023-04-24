@@ -1,4 +1,4 @@
-export const getAllUsers =async()=>{
+export const getAllUsers = async () => {
     //hacemos la funcion asincrona porque hay que recoger los datos de una url y ponemos en el await la variable que va a guardar dichos datos
     //le pasamos la url de la api y esto nos devolverá un json
     let response = await fetch('https://reqres.in/api/users')
@@ -13,7 +13,7 @@ export const getAllUsers =async()=>{
 
 //esta es la misma funcion que la de arriba solo que en esta podemos enseñar a los usuarios por paginas
 
-export const getPagedUsers =async(page)=>{
+export const getPagedUsers = async (page) => {
     //hacemos la funcion asincrona porque hay que recoger los datos de una url y ponemos en el await la variable que va a guardar dichos datos
     //le pasamos la url de la api y esto nos devolverá un json
     let response = await fetch(`https://reqres.in/api/users?page=${page}`)
@@ -24,11 +24,34 @@ export const getPagedUsers =async(page)=>{
 
 
 
-export const getUserDetails=async(id)=>{
+export const getUserDetails = async (id) => {
     //hacemos la funcion asincrona porque hay que recoger los datos de una url y ponemos en el await la variable que va a guardar dichos datos
     //le pasamos la url de la api y esto nos devolverá un json
     let response = await fetch(`https://reqres.in/api/users/${id}`)
     console.log(response)
     //devolvemos el json, si ponemos directamente response sin el .json cuando lo llamamos en el componente tenemos que poner el .json y el .then
-    return response.json() 
+    return response.json()
+}
+
+
+
+
+
+
+export const login = async (email, password) => {
+    let body = {
+        //esto es lo mismo que poner email:enail (porque es el mismo nombre)
+        email:email,
+        password:password
+    }
+    let response = await fetch('https://reqres.in/api/login', {
+         method: 'POST',
+        // mode: 'no-cors',
+        // credentials: 'omit',
+        // cache: 'no-cache',
+        // headers: { 'Content-type': 'application/json' },
+        body,
+
+    })
+    return response.json()
 }

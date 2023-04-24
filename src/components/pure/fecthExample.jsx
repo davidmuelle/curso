@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { getAllUsers, getPagedUsers, getUserDetails } from '../../services/fetchService';
+import { getAllUsers, getPagedUsers, getUserDetails, login } from '../../services/fetchService';
 const FecthExample = () => {
 
     const [users, setusers] = useState([]);
@@ -76,11 +76,31 @@ const FecthExample = () => {
 
     }
 
+
+    const authUser = () => {
+        login('eve.holt@reqres.in', 'cityslicka')
+            .then((response) => {
+                console.log('token: ', response.token)
+                //aqui me está guardando los datos de la tabla en la constante users gracias al useState
+                sessionStorage.setItem('token'.response.token)
+
+            })//si no se ha podido cumplir la promesa salta el catch y nos salta el error
+            .catch((error) => {
+                console.log("error: ", error)
+            })
+            .finally(() => {
+                console.log("terminado login")
+
+            })
+    }
+
     return (
         <div>
+            {/* boton que simula el de login */}
+            <button onClick={()=>authUser()}>login</button>
             <h2>listado de usuarios</h2>
             {users.map((user, index) => {
-                return (<p  onClick={() => obtainUserDetail(user.id)} key={index} >{user.first_name} {user.last_name}</p>)
+                return (<p onClick={() => obtainUserDetail(user.id)} key={index} >{user.first_name} {user.last_name}</p>)
             })}
             <p>showing{totalPerPage} users of {total_users}</p>
             <button onClick={() => obtainPagedUsers(1)}>
@@ -92,14 +112,14 @@ const FecthExample = () => {
             </button>
             <div>
                 <h3>user details</h3>
-                {selecteUser && (
+                {(selecteUser != null) ? (
                     <>
 
                         <p>name: {selecteUser.first_name}</p>
                         <p>last name: {selecteUser.last_name}</p>
                     </>
 
-                )}
+                ) : (<p>click en un usuario para ver informacion</p>)}
             </div>
         </div>
     );
